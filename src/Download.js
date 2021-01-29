@@ -1,4 +1,5 @@
 import React from 'react';
+import Styles from './Styles';
 
 export function Download(props) {
   /* Handles the download of the generated meme. */
@@ -19,10 +20,10 @@ export function Download(props) {
   }
 
   return (
-    <p>
+    <Styles.Download>
       <button onClick={handleDownloadClick} download>
-        Download your meme
+        Download generated meme
       </button>
-    </p>
+    </Styles.Download>
   );
 }

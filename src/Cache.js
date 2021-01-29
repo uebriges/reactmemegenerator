@@ -1,17 +1,24 @@
 import React from 'react';
+import Styles from './Styles';
 
 export function Cache(props) {
   console.log('props.generatedMemes: ', typeof props.generatedMemes);
   return (
     <>
       <p>
-        <i>This is your cache: </i>
+        <i style={{ 'margin-left': '20px' }}>Your generated memes: </i>
       </p>
-      <div>
+      <Styles.CacheBox>
         {props.generatedMemes.map((element) => {
-          return <img src={element.url} alt="your cache" key={element.url} />;
+          return (
+            <Styles.CacheImage
+              src={element.url}
+              alt="your cache"
+              key={element.url}
+            />
+          );
         })}
-      </div>
+      </Styles.CacheBox>
     </>
   );
 }

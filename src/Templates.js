@@ -1,25 +1,8 @@
-import styled from '@emotion/styled';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-const templateURLsExt = [];
-
-const TemplateImage = styled.img`
-  height: 100px;
-  width: 130px;
-`;
-
-const TemplateImageButton = styled.button`
-  padding: 5px;
-  margin: 5px;
-  border-radius: 5px;
-  :hover {
-    background-color: grey;
-  }
-`;
+import Styles from './Styles';
 
 export function Templates(props) {
-  const [currentTempalteURL, setCurrentTemplateURL] = useState('');
   const [templateURLs, setTemplateURLs] = useState([]);
 
   useEffect(() => {
@@ -38,29 +21,31 @@ export function Templates(props) {
   }, [templateURLs]);
 
   return (
-    <div>
-      {templateURLs.map((element, index) => {
-        return (
-          <TemplateImageButton
-            id="templateImage"
-            key={'btn' + index}
-            onClick={(e) => {
-              setCurrentTemplateURL(e.target.src);
-              props.scrollTo('preview');
-              props.setBaseURL(e.target.src);
-            }}
-          >
-            <TemplateImage
-              key={element}
-              src={element}
-              alt="this is the alt text"
-            />
-          </TemplateImageButton>
-        );
-      })}
+    <>
       <p>
-        <img id="templateImage" alt="alt text juhu" src={currentTempalteURL} />
+        <i style={{ 'margin-left': '20px' }}>Your selection of templates: </i>
       </p>
-    </div>
+      <Styles.TempalteBox>
+        {templateURLs.map((element, index) => {
+          return (
+            <Styles.TemplateImageButton
+              id="templateImage"
+              key={'btn' + index}
+              onClick={(e) => {
+                props.setCurrentTemplateURL(e.target.src);
+                props.scrollTo('templateImage');
+                props.setBaseURL(e.target.src);
+              }}
+            >
+              <Styles.TemplateImage
+                key={element}
+                src={element}
+                alt="this is the alt text"
+              />
+            </Styles.TemplateImageButton>
+          );
+        })}
+      </Styles.TempalteBox>
+    </>
   );
 }
