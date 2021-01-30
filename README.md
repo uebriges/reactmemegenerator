@@ -2,7 +2,7 @@
 
 This project let's you generate memes with some custom text and download them.
 
-![Readme](./src/Readme.jpeg)
+![Readme](https://github.com/uebriges/reactmemegenerator/blob/main/src/Readme.jpg)
 
 Following functionality is included in this react project:
 
