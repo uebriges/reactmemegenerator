@@ -72,7 +72,7 @@ const CacheBox = Styled.div`
   margin: 20px;
   padding: 10px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   ::-webkit-scrollbar {
     height: 13px;
     background: white;

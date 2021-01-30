@@ -9,15 +9,17 @@ export function Cache(props) {
         <i style={{ 'margin-left': '20px' }}>Your generated memes: </i>
       </p>
       <Styles.CacheBox>
-        {props.generatedMemes.map((element) => {
-          return (
-            <Styles.CacheImage
-              src={element.url}
-              alt="your cache"
-              key={element.url}
-            />
-          );
-        })}
+        {props.generatedMemes
+          ? props.generatedMemes.map((element) => {
+              return (
+                <Styles.CacheImage
+                  src={element.url}
+                  alt="your cache"
+                  key={element.url}
+                />
+              );
+            })
+          : ''}
       </Styles.CacheBox>
     </>
   );

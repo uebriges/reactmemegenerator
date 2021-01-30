@@ -7,25 +7,29 @@ import { Templates } from './Templates';
 let baseUrl = 'https://api.memegen.link/images/buzz/';
 
 export default function MemeGenerator() {
-  const [url, setUrl] = useState();
-  let [draftTopText, setDraftTopText] = useState('');
-  let [draftBottomText, setDraftBottomText] = useState('');
-  const [generatedMemes, setGeneratedMemes] = useState();
+  const [url, setUrl] = useState('');
+  const [draftTopText, setDraftTopText] = useState('');
+  const [draftBottomText, setDraftBottomText] = useState('');
   const [currentTemplateURL, setCurrentTemplateURL] = useState('');
 
   /* Generates Meme */
   function handleMemeGeneratorClick() {
-    draftTopText = draftTopText
-      .replace(/#/g, '~s')
-      .replace(/\//g, '~h')
-      .replace(/\?/g, '~q');
-    draftBottomText = draftBottomText
-      .replace(/#/g, '~s')
-      .replace(/\//g, '~h')
-      .replace(/\?/g, '~q');
+    // Make special characters #/? work
+    setDraftTopText(
+      draftTopText
+        .replace(/#/g, '~s')
+        .replace(/\//g, '~h')
+        .replace(/\?/g, '~q'),
+    );
+    setDraftBottomText(
+      draftBottomText
+        .replace(/#/g, '~s')
+        .replace(/\//g, '~h')
+        .replace(/\?/g, '~q'),
+    );
 
     const testURL =
-      baseUrl.substring(0, baseUrl.length - 4) +
+      baseUrl.slice(0, baseUrl.length - 4) +
       '/' +
       draftTopText +
       '/' +
@@ -33,26 +37,26 @@ export default function MemeGenerator() {
       '.jpg';
     setUrl(testURL);
 
-    let memeArray = localStorage.getItem('generatedMemesKey')
+    const memeArray = localStorage.getItem('generatedMemesKey')
       ? JSON.parse(localStorage.getItem('generatedMemesKey'))
       : [];
 
+    // Check if exact same meme is already stored in the localStore
     if (
       !memeArray.some((meme) => {
         return meme.url === testURL;
       })
     ) {
-      memeArray.push({
+      memeArray.unshift({
         url: testURL,
         toptext: draftTopText,
         bottomtext: draftBottomText,
       });
       localStorage.setItem('generatedMemesKey', JSON.stringify(memeArray));
-      setGeneratedMemes(memeArray);
     }
   }
 
-  /* Handles click of on any template button */
+  /* Handles click of a template button */
   function handleTemplateButtonClick(id) {
     document.getElementById(id).scrollIntoView();
   }
