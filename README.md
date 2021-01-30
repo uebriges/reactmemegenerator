@@ -2,7 +2,7 @@
 
 This project let's you generate memes with some custom text and download them.
 
-Picture!!!
+![Readme](Readme.jpeg)
 
 Following functionality is included in this react project:
 
