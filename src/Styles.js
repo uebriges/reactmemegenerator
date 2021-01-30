@@ -103,7 +103,7 @@ const EmptyDiv = Styled.div`
   height: 100%;
 `;
 
-export default {
+const exportedStyles = {
   TemplateImageButton,
   TempalteBox,
   ChosenTemplate,
@@ -117,3 +117,4 @@ export default {
   Download,
   EmptyDiv,
 };
+export default exportedStyles;
