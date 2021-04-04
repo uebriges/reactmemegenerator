@@ -103,6 +103,10 @@ const EmptyDiv = Styled.div`
   height: 100%;
 `;
 
+const IElement = Styled.i`
+margin-left: 20px
+`;
+
 const exportedStyles = {
   TemplateImageButton,
   TempalteBox,
@@ -116,5 +120,6 @@ const exportedStyles = {
   CacheImage,
   Download,
   EmptyDiv,
+  IElement,
 };
 export default exportedStyles;

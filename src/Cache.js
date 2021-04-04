@@ -2,11 +2,11 @@ import React from 'react';
 import Styles from './Styles';
 
 export function Cache(props) {
-  console.log('props.generatedMemes: ', typeof props.generatedMemes);
   return (
     <>
       <p>
-        <i style={{ 'margin-left': '20px' }}>Your generated memes: </i>
+        <Styles.IElement>Your generated memes: </Styles.IElement>
+        {/* <i style={{ 'margin-left': '20px' }}>Your generated memes: </i> */}
       </p>
       <Styles.CacheBox>
         {props.generatedMemes

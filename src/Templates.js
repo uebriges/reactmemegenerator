@@ -23,7 +23,8 @@ export function Templates(props) {
   return (
     <>
       <p>
-        <i style={{ 'margin-left': '20px' }}>Your selection of templates: </i>
+        <Styles.IElement>Your selection of templates:</Styles.IElement>
+        {/* <i style={{ 'margin-left': '20px' }}>Your selection of templates: </i> */}
       </p>
       <Styles.TempalteBox>
         {templateURLs.map((element, index) => {
